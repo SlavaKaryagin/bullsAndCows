@@ -1,0 +1,72 @@
+body, html {
+    width: 100%;
+    height: 100%;
+}
+
+input, button, h3, h5, p {
+    margin: 5px 5px 5px 0;
+}
+
+#content {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow: auto;
+}
+
+#login {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow: auto;
+}
+
+#error {
+    border: 2px double black;
+    background: #FFFFFF;
+    padding: 10px;
+}
+
+#topContentGame {
+    width: 100%;
+    heigth: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin-top: 20px;
+}
+
+
+#rulesGame, #topUsers {
+    width: 100%;
+    heigth: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#innerRulesGame {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+#imagesRules {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-right: 100px;
+}
+
+#bottomContentGame {
+    width: 100%;
+    heigth: 100%;
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
