@@ -12,7 +12,7 @@ import java.io.OutputStream;
 @WebServlet("/game")
 public class GameServlet extends HttpServlet {
     @Override protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String step = req.getParameter("step").trim();
+        String step = req.getParameter("step").trim() + " 3 коровы 1 бык";
         resp.setContentType("text/plain");
 
         OutputStream outStream = resp.getOutputStream();

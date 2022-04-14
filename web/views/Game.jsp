@@ -79,13 +79,13 @@
 <div id="bottomContentGame">
     <b>Компьютер уже что-то задумал. Играем!</b>
     <p>Найди число, задуманное компьютером!</p>
-    <%--    <form id="login" method="post" action="/game">--%>
+    <form id="formGame" action="javascript:void(0)">
     <div>
-        <input id="inputStep" type="text" name="step" minlength="4" maxlength="4" required>
+        <input id="inputStep" type="text" name="step" oninput="js/findRepeat();" minlength="4" maxlength="4" required>
         <button id="buttonStep" type="submit">Сделать ход</button>
     </div>
+    </form>
     <button type="submit">Новая игра</button>
-    <%--    </form>--%>
     <ol id="results_steps">
     </ol>
 
