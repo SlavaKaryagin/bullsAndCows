@@ -13,6 +13,8 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="../js/app-ajax.js" type="text/javascript"></script>
+
+    <script src="../js/findRepeat.js" type="text/javascript"></script>
 </head>
 <body>
 
@@ -81,7 +83,7 @@
     <p>Найди число, задуманное компьютером!</p>
     <form id="formGame" action="javascript:void(0)">
     <div>
-        <input id="inputStep" type="text" name="step" oninput="js/findRepeat();" minlength="4" maxlength="4" required>
+        <input id="inputStep" type="text" name="step" minlength="4" maxlength="4" oninput="findRepeat();" required>
         <button id="buttonStep" type="submit">Сделать ход</button>
     </div>
     </form>
