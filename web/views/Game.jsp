@@ -8,13 +8,18 @@
             integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
             crossorigin="anonymous"></script>
 
-    <link rel="stylesheet" href="../styles.css" type="text/css">
+    <link rel="stylesheet" href="../styles/styles.css" type="text/css">
 
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="../js/app-ajax.js" type="text/javascript"></script>
 
-    <script src="../js/findRepeat.js" type="text/javascript"></script>
+    <script src="../js/formGameSubmit.js" type="text/javascript"></script>
+
+    <script src="../js/newGameSubmit.js" type="text/javascript"></script>
+
+    <script src="../js/checkOnPageLoad.js" type="text/javascript"></script>
+
+    <script src="../js/checkInputNumber.js" type="text/javascript"></script>
 </head>
 <body>
 
@@ -41,39 +46,29 @@
                 <p></p>
                 <p>Игрок сделал ход 8134. </p>
                 <p></p>
-                <p>Компьютер ответил: 2 быка (цифры 3 и 4) и 1 корова (цифра 8).</p>
+                <p>Компьютер ответил: 2 быка (цифры 3 и 4) и 1 корова (цифра 8) - 2Б1К.</p>
                 </h4>
             </div>
         </div>
     </div>
     <div id=topUsers>
         <b><u>Рейтинг пользователей</u></b>
-        <table class="table">
-            <thead>
+        <table class="table" id="rating">
+            <thead class="thead-dark">
             <tr>
                 <th>UserName</th>
                 <th>Кол-во игр</th>
-                <th>Кол-во попыток</th>
+                <th>Ср. кол-во попыток</th>
                 <th>Страна</th>
             </tr>
             </thead>
-            <tbody>
-            <tr>
-                <td>Sanya</td>
-                <td>35</td>
-                <td>7</td>
-                <td>England</td>
-            </tr>
-            <tr>
-                <td>Max</td>
-                <td>2</td>
-                <td>3</td>
-                <td>Swedish</td>
-            </tr>
+            <tbody id="topUsersBody">
+
             </tbody>
-            <tfoot>
-            </tfoot>
         </table>
+    </div>
+    <div>
+        <a href="/logout"><small>Выйти</small></a>
     </div>
 </div>
 
@@ -81,18 +76,23 @@
 <div id="bottomContentGame">
     <b>Компьютер уже что-то задумал. Играем!</b>
     <p>Найди число, задуманное компьютером!</p>
+
     <form id="formGame" action="javascript:void(0)">
-    <div>
-        <input id="inputStep" type="text" name="step" minlength="4" maxlength="4" oninput="findRepeat();" required>
-        <button id="buttonStep" type="submit">Сделать ход</button>
-    </div>
+        <div>
+            <input id="inputStep" type="text" name="step" minlength="4" maxlength="4" oninput="checkInputNumber()"
+                   required>
+            <button id="buttonStep" type="submit">Сделать ход</button>
+        </div>
     </form>
-    <button type="submit">Новая игра</button>
+
+    <form method="get" action="/game">
+        <button id="newGameButton" type="submit">Новая игра</button>
+        <input type="hidden" name="state" value="new"/>
+    </form>
+
     <ol id="results_steps">
     </ol>
-
 </div>
 
-</div>
 </body>
 </html>

@@ -8,10 +8,20 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 
+/**
+ * Класc для работы с БД (сущность - User)
+ */
 public class UserDAO {
 
     private static PreparedStatement preparedStatement;
 
+    /**
+     * Метод для создания пользователя
+     *
+     * @param conn
+     * @param user
+     * @throws SQLException
+     */
     public static void insertUser(Connection conn, User user) throws SQLException {
         String insert = "INSERT INTO USER_ACCOUNT (email, user_name, gender, country, password) VALUES (?,?,?,?,?)";
 
@@ -24,6 +34,14 @@ public class UserDAO {
         preparedStatement.executeUpdate();
     }
 
+    /**
+     * Метод поиска пользователя
+     *
+     * @param conn
+     * @param email
+     * @return
+     * @throws SQLException
+     */
     public static ResultSet findUser(Connection conn, String email) throws SQLException {
         String select = "SELECT * FROM USER_ACCOUNT WHERE EMAIL = ?";
 
@@ -34,6 +52,14 @@ public class UserDAO {
 
     }
 
+    /**
+     * Метод проверки на существование пользователя
+     *
+     * @param conn
+     * @param email
+     * @return
+     * @throws SQLException
+     */
     public static boolean userIsExist(Connection conn, String email) throws SQLException {
         String select = "SELECT * FROM USER_ACCOUNT WHERE EMAIL = ?";
 
@@ -47,6 +73,15 @@ public class UserDAO {
         }
     }
 
+    /**
+     * Метод проверки пользователя по введеным им данным
+     *
+     * @param conn
+     * @param email
+     * @param pass
+     * @return
+     * @throws SQLException
+     */
     public static boolean userAccountIsCorrect(Connection conn, String email, String pass) throws SQLException {
         String select = "SELECT * FROM USER_ACCOUNT WHERE EMAIL = ? AND PASSWORD = ?";
 
@@ -61,6 +96,4 @@ public class UserDAO {
             return false;
         }
     }
-
-
 }

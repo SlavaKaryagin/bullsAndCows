@@ -12,13 +12,20 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.SQLException;
 
+/**
+ * Сервлет отвечающий за авторизацию пользователя
+ */
 @WebServlet("/auth")
 public class AuthorizationServlet extends HttpServlet {
-    @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        super.doGet(req, resp);
-    }
 
+    /**
+     * Метод обработки POST запроса
+     *
+     * @param req
+     * @param resp
+     * @throws ServletException
+     * @throws IOException
+     */
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
@@ -43,5 +50,17 @@ public class AuthorizationServlet extends HttpServlet {
             req.setAttribute("error", error);
             requestDispatcher.forward(req, resp);
         }
+    }
+
+    /**
+     * Метод обработки GET запроса
+     *
+     * @param req
+     * @param resp
+     * @throws ServletException
+     * @throws IOException
+     */
+    @Override protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        super.doGet(req, resp);
     }
 }

@@ -11,12 +11,20 @@ import javax.servlet.http.*;
 import java.io.IOException;
 import java.sql.SQLException;
 
+/**
+ * Сервлет для регистрации пользовтаеля
+ */
 @WebServlet("/reg")
 public class RegistrationServlet extends HttpServlet {
-    @Override protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        super.doGet(req, resp);
-    }
 
+    /**
+     * Метод для обработки POST запроса
+     *
+     * @param req
+     * @param resp
+     * @throws ServletException
+     * @throws IOException
+     */
     @Override protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
         req.setCharacterEncoding("UTF-8");
@@ -45,5 +53,17 @@ public class RegistrationServlet extends HttpServlet {
             req.setAttribute("error", error);
             requestDispatcher.forward(req, resp);
         }
+    }
+
+    /**
+     * Метод обработки GET запроса
+     *
+     * @param req
+     * @param resp
+     * @throws ServletException
+     * @throws IOException
+     */
+    @Override protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        super.doGet(req, resp);
     }
 }
