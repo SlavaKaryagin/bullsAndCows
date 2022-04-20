@@ -62,7 +62,7 @@
         <%
             if (request.getParameter("country") != null) {
                 out.println(" <select name=\"country\" id=\"countriesList\" required>\n" +
-                        "            <option value=\"" + request.getParameter("country") + "\">" + request.getParameter("country") + "</option>\n" +
+                        "            <option value=\"" + request.getParameter("country") + "\" selected>" + request.getParameter("country") + " </option>\n" +
                         "            <option value=\"Afganistan\">Afghanistan</option>\n" +
                         "            <option value=\"Albania\">Albania</option>\n" +
                         "            <option value=\"Algeria\">Algeria</option>\n" +

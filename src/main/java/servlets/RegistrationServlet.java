@@ -28,9 +28,6 @@ public class RegistrationServlet extends HttpServlet {
     @Override protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
         req.setCharacterEncoding("UTF-8");
-        System.out.println(req.getParameter("email"));
-        System.out.println(req.getParameter("country"));
-        System.out.println(req.getParameter("gender"));
         RequestDispatcher requestDispatcher = req.getRequestDispatcher(req.getContextPath() + "views/Authorization.jsp");
         String error;
 

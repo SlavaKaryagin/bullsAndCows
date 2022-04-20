@@ -40,7 +40,6 @@ public class AuthorizationServlet extends HttpServlet {
             } else {
                 error = "Ошибка авторизации. Неверный логин или пароль";
                 req.setAttribute("error", error);
-                System.out.println((String) req.getAttribute("error"));
                 requestDispatcher.forward(req, resp);
             }
 
