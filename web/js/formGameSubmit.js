@@ -1,3 +1,4 @@
+/* Вывод пары Быки-Коровы после отправки числа пользователем */
 $(document).ready(function () {
     $('#formGame').submit(function () {
         $.ajax({
