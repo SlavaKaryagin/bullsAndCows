@@ -42,12 +42,9 @@ public class GameServlet extends HttpServlet {
                     conn = DBConnection.getConnection();
                     if (GameDAO.isActiveGame(conn, userId)) {
                         GameDAO.deleteActiveGame(conn, userId);
-                        resp.sendRedirect(req.getContextPath() + "/views/Game.jsp");
-                        return;
-                    } else {
-                        resp.sendRedirect(req.getContextPath() + "/views/Game.jsp");
-                        return;
                     }
+                    resp.sendRedirect(req.getContextPath() + "/views/Game.jsp");
+                    return;
                 } catch (SQLException e) {
                     e.printStackTrace();
                 } catch (ClassNotFoundException e) {
@@ -58,10 +55,8 @@ public class GameServlet extends HttpServlet {
                     conn = DBConnection.getConnection();
                     if (GameDAO.isActiveGame(conn, userId)) {
                         GameDAO.deleteActiveGame(conn, userId);
-                        return;
-                    } else {
-                        return;
                     }
+                    return;
                 } catch (SQLException e) {
                     e.printStackTrace();
                 } catch (ClassNotFoundException e) {
