@@ -38,9 +38,7 @@ public class RatingUsersServlet extends HttpServlet {
             out.print(json);
             out.flush();
 
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } catch (ClassNotFoundException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }

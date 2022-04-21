@@ -46,7 +46,7 @@ public class GameServlet extends HttpServlet {
                     resp.sendRedirect(req.getContextPath() + "/views/Game.jsp");
                 }
                 return;
-            } catch (SQLException | ClassNotFoundException e) {
+            } catch (Exception e) {
                 e.printStackTrace();
             }
         }
@@ -92,7 +92,7 @@ public class GameServlet extends HttpServlet {
 
                 stepResp = userNumber + " - " + result;
 
-            } catch (SQLException | ClassNotFoundException e) {
+            } catch (Exception e) {
                 e.printStackTrace();
                 stepResp = "ERROR";
             }

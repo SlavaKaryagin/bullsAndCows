@@ -43,7 +43,7 @@ public class AuthorizationServlet extends HttpServlet {
                 requestDispatcher.forward(req, resp);
             }
 
-        } catch (SQLException | ClassNotFoundException e) {
+        } catch (Exception e) {
             e.printStackTrace();
             error = e.getMessage();
             req.setAttribute("error", error);

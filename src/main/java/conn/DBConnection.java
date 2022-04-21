@@ -1,7 +1,9 @@
 package conn;
 
+import com.mchange.v2.c3p0.ComboPooledDataSource;
+
+import java.beans.PropertyVetoException;
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.SQLException;
 
 
@@ -10,21 +12,33 @@ import java.sql.SQLException;
  */
 public class DBConnection {
 
-    static final String JDBC_DRIVER = "org.h2.Driver";
-    static final String DB_URL = "jdbc:h2:mem:store;"
-            + "INIT=RUNSCRIPT FROM 'classpath:db/schema.sql'";
-    static final String USER = "admin";
-    static final String PASS = "";
+    public static ComboPooledDataSource getDataSource() throws PropertyVetoException {
+        ComboPooledDataSource cpds = new ComboPooledDataSource();
+        cpds.setJdbcUrl("jdbc:h2:mem:store;"
+                + "INIT=RUNSCRIPT FROM 'classpath:db/schema.sql'");
+        cpds.setDriverClass("org.h2.Driver");
+        cpds.setUser("admin");
+        cpds.setPassword("");
+        cpds.setInitialPoolSize(5);
+        cpds.setMinPoolSize(5);
+        cpds.setAcquireIncrement(5);
+        cpds.setMaxPoolSize(20);
+        cpds.setMaxStatements(100);
 
-    /**
-     * Метод получения соединения к БД
-     *
-     * @return Connection
-     * @throws SQLException
-     * @throws ClassNotFoundException
-     */
-    public static Connection getConnection() throws SQLException, ClassNotFoundException {
-        Class.forName(JDBC_DRIVER);
-        return DriverManager.getConnection(DB_URL, USER, PASS);
+        return cpds;
+    }
+
+    public static Connection getConnection() throws SQLException {
+        ComboPooledDataSource dataSource = null;
+        Connection connection = null;
+        try {
+            dataSource = DBConnection.getDataSource();
+            connection = dataSource.getConnection();
+        } catch (PropertyVetoException e) {
+            connection.rollback();
+            e.printStackTrace();
+        }
+
+        return connection;
     }
 }
