@@ -19,7 +19,6 @@ public class GameSessionFilter implements Filter {
         HttpServletResponse response = (HttpServletResponse) resp;
 
         if (!SessionUtils.sessionIsLive(request)) {
-            System.out.println("IS_AUTH IS NULL");
             response.sendRedirect(request.getContextPath() + "/views/Authorization.jsp");
             return;
         } else {

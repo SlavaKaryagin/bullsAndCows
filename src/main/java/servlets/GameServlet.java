@@ -17,7 +17,7 @@ import java.sql.Connection;
 import java.sql.SQLException;
 
 /**
- * Сервлет для бработки запросов с игровой страницы. Запросы как по самой игре, так и технические
+ * Сервлет для обработки запросов с игровой страницы. Запросы как по самой игре, так и технические
  */
 @WebServlet("/game")
 public class GameServlet extends HttpServlet {
@@ -37,34 +37,19 @@ public class GameServlet extends HttpServlet {
         String state = req.getParameter("state");
 
         if (state != null) {
-            if (state.equals("new")) {
-                try {
-                    conn = DBConnection.getConnection();
-                    if (GameDAO.isActiveGame(conn, userId)) {
-                        GameDAO.deleteActiveGame(conn, userId);
-                    }
+            try {
+                conn = DBConnection.getConnection();
+                if (GameDAO.isActiveGame(conn, userId)) {
+                    GameDAO.deleteActiveGame(conn, userId);
+                }
+                if (state.equals("new")) {
                     resp.sendRedirect(req.getContextPath() + "/views/Game.jsp");
-                    return;
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                } catch (ClassNotFoundException e) {
-                    e.printStackTrace();
                 }
-            } else if (state.equals("refresh")) {
-                try {
-                    conn = DBConnection.getConnection();
-                    if (GameDAO.isActiveGame(conn, userId)) {
-                        GameDAO.deleteActiveGame(conn, userId);
-                    }
-                    return;
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                } catch (ClassNotFoundException e) {
-                    e.printStackTrace();
-                }
+                return;
+            } catch (SQLException | ClassNotFoundException e) {
+                e.printStackTrace();
             }
         }
-
 
         String result = "";
         Game game;
@@ -120,6 +105,7 @@ public class GameServlet extends HttpServlet {
             outStream.close();
 
         }
+
     }
 
     /**
@@ -134,3 +120,4 @@ public class GameServlet extends HttpServlet {
         super.doPost(req, resp);
     }
 }
+
