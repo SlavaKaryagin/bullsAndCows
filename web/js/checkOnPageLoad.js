@@ -14,7 +14,7 @@ $(document).ready(function () {
     if (sessionStorage.getItem('newGame') == 'true') {
         sessionStorage.removeItem('newGame');
     } else {
-        $.ajax({url: "/game?state=refresh", async: false},
+        $.ajax({url: "./game?state=refresh", async: false},
         );
     }
 
@@ -22,7 +22,7 @@ $(document).ready(function () {
     $.ajax({
         cache: false,
         type: "GET",
-        url: "/rating",
+        url: "./rating",
         async: false,
         contentType: "application/json; charset=utf-8",
         success: function (data) {

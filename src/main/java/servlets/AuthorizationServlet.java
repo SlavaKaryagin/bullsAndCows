@@ -29,14 +29,14 @@ public class AuthorizationServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-        RequestDispatcher requestDispatcher = req.getRequestDispatcher(req.getContextPath() + "views/Authorization.jsp");
+        RequestDispatcher requestDispatcher = req.getRequestDispatcher("/Authorization.jsp");
         String error;
 
         try {
             if (UserDAO.userAccountIsCorrect(DBConnection.getConnection(), req.getParameter("email"), req.getParameter("pass"))) {
                 req.getSession().setAttribute("USER_ID", req.getParameter("email"));
                 req.getSession().setAttribute("IS_AUTH", "true");
-                resp.sendRedirect(req.getContextPath() + "/views/Game.jsp");
+                resp.sendRedirect(req.getContextPath() + "/Game.jsp");
             } else {
                 error = "Ошибка авторизации. Неверный логин или пароль";
                 req.setAttribute("error", error);

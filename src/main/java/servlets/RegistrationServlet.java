@@ -28,7 +28,7 @@ public class RegistrationServlet extends HttpServlet {
     @Override protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
         req.setCharacterEncoding("UTF-8");
-        RequestDispatcher requestDispatcher = req.getRequestDispatcher(req.getContextPath() + "views/Authorization.jsp");
+        RequestDispatcher requestDispatcher = req.getRequestDispatcher("/Authorization.jsp");
         String error;
 
         User user = new User(req.getParameter("email"), req.getParameter("username"), req.getParameter("gender"), req.getParameter("country"), req.getParameter("pass"));
@@ -36,7 +36,7 @@ public class RegistrationServlet extends HttpServlet {
             if (UserDAO.userIsExist(DBConnection.getConnection(), req.getParameter("email"))) {
                 error = "Пользователь с таким email уже зарегистрирован";
                 req.setAttribute("error", error);
-                requestDispatcher = req.getRequestDispatcher(req.getContextPath() + "/views/Registration.jsp");
+                requestDispatcher = req.getRequestDispatcher("/Registration.jsp");
                 requestDispatcher.forward(req, resp);
 
             } else {

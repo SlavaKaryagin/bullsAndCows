@@ -8,18 +8,18 @@
             integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
             crossorigin="anonymous"></script>
 
-    <link rel="stylesheet" href="../styles/styles.css" type="text/css">
+    <link rel="stylesheet" href="styles/styles.css" type="text/css">
 
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
-    <script src="../js/formGameSubmit.js" type="text/javascript"></script>
+    <script src="js/formGameSubmit.js" type="text/javascript"></script>
 
-    <script src="../js/newGameSubmit.js" type="text/javascript"></script>
+    <script src="js/newGameSubmit.js" type="text/javascript"></script>
 
-    <script src="../js/checkOnPageLoad.js" type="text/javascript"></script>
+    <script src="js/checkOnPageLoad.js" type="text/javascript"></script>
 
-    <script src="../js/checkInputNumber.js" type="text/javascript"></script>
+    <script src="js/checkInputNumber.js" type="text/javascript"></script>
 </head>
 <body>
 
@@ -28,8 +28,8 @@
         <b><u>Правила игры</u></b>
         <div id="innerRulesGame">
             <div id="imagesRules">
-                <img src="../images/bull-main.png" alt="" width="150" height="113">
-                <img src="../images/cow.png" alt="" width="128" height="118">
+                <img src="images/bull-main.png" alt="" width="150" height="113">
+                <img src="images/cow.png" alt="" width="128" height="118">
             </div>
             <div id="textRules">
                 <p>Компьютер задумывает четыре различные цифры из 0,1,2,...9.</p>
@@ -68,7 +68,7 @@
         </table>
     </div>
     <div>
-        <a href="/logout"><small>Выйти</small></a>
+        <% out.println("<a href=\"" + request.getContextPath() + "/logout\"><small>Выйти</small></a>");%>
     </div>
 </div>
 
@@ -84,10 +84,9 @@
             <button id="buttonStep" type="submit">Сделать ход</button>
         </div>
     </form>
-
-    <form method="get" action="/game">
-        <button id="newGameButton" type="submit">Новая игра</button>
-        <input type="hidden" name="state" value="new"/>
+    <% out.println("<form method=\"get\" action=\"" + request.getContextPath() + "/game\">");%>
+    <button id="newGameButton" type="submit">Новая игра</button>
+    <input type="hidden" name="state" value="new"/>
     </form>
 
     <ol id="results_steps">

@@ -2,7 +2,7 @@
 $(document).ready(function () {
     $('#formGame').submit(function () {
         $.ajax({
-            url: '/game',
+            url: './game',
             contentType: "application/x-www-form-urlencoded;charset=utf-8",
             data: {
                 step: $('#inputStep').val()

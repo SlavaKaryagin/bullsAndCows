@@ -43,7 +43,7 @@ public class GameServlet extends HttpServlet {
                     GameDAO.deleteActiveGame(conn, userId);
                 }
                 if (state.equals("new")) {
-                    resp.sendRedirect(req.getContextPath() + "/views/Game.jsp");
+                    resp.sendRedirect(req.getContextPath() + "/Game.jsp");
                 }
                 return;
             } catch (Exception e) {

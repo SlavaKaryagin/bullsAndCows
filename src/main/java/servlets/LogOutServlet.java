@@ -25,7 +25,7 @@ public class LogOutServlet extends HttpServlet {
      */
     @Override protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         SessionUtils.deleteSession(req);
-        resp.sendRedirect(req.getContextPath() + "/views/Authorization.jsp");
+        resp.sendRedirect(req.getContextPath() + "/Authorization.jsp");
     }
 
     /**
